@@ -1,5 +1,5 @@
-import * as movieActions from './movieActions';
+import * as flightActions from './flightActions';
 
 export default {
-  movieActions
+  flightActions
 }

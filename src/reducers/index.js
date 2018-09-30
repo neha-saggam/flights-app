@@ -1,6 +1,6 @@
-import movieReducer from './movie';
+import flightReducer from './flight';
 import { combineReducers } from 'redux';
 
 export default combineReducers({
-    movieReducer:movieReducer
+    flightReducer: flightReducer
 });

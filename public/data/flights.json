@@ -1,0 +1,14 @@
+[
+    {
+       "code":"AI-202",
+       "type": "one-way",
+       "to":"Pune",
+       "from":"Delhi",
+       "departTime":"10:00 AM",
+       "arriveTime":"12:00 PM",
+       "departDate":"1st Jan 2012",
+       "arriveDate": "10th Jan 2012",
+       "country":"USA"
+    }
+ ]
+ 

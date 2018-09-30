@@ -1,13 +1,31 @@
 import axios from 'axios';
 import { predicateBy } from '../utils/common';
 
-const URL = `https://raw.githubusercontent.com/neha-saggam/movie-app/master/public/data/movies.json`;
+// const URL = `https://raw.githubusercontent.com/neha-saggam/movie-app/master/public/data/movies.json`;
+
+const URL = `https://jsonplaceholder.typicode.com/todos/1`;
 
 
-export function getMovies() {
+export function getFlights() {
       return function(dispatch) {
         axios.get(URL)
       .then((response) => {
+        response.data = [
+          {
+             "id":"AI-202",
+             "type": "one-way",
+             "origin":"Pune",
+             "destination":"Delhi",
+             "departTime":"10:00 AM",
+             "arriveTime":"12:00 PM",
+             "departDate":"1st Jan 2012",
+             "arriveDate": "10th Jan 2012",
+             "cost": 9500,
+             "unit": "INR",
+             "airlines": "XYZ"
+          }
+       ]
+       
         dispatch(getMovieSuccess(response.data));
         dispatch(getLanguages(response.data));
         dispatch(getCountries(response.data));
@@ -61,17 +79,26 @@ function getMovieFailure(err) {
   }
 }
 
-export function searchMovie(searchText) {
+export function searchFlight(origin, destination, departureDate, returnDate) {
   return (dispatch, getState) => {
-    const {movies} = getState().movieReducer;
-    console.log("Search");
-    let updatedMovies = [];
-    for(let i=0; i<movies.length; i++) {
-      if(movies[i].movie_title.trim().toUpperCase() === searchText.trim().toUpperCase()) {
-          updatedMovies = movies.slice(i, i+1);
+    const {flights} = getState().flightReducer;
+    let updatedFlights = [];
+    if(returnDate !== "") {
+      for(let i=0; i<flights.length; i++) {
+        if(flights[i].origin.trim().toUpperCase() === origin.trim().toUpperCase() && flights[i].destination.trim().toUpperCase() === destination && flights[i].departureDate === departureDate && flights[i].returnDate === returnDate) {
+          updatedFlights = flights.slice(i, i+1);
+        }
       }
     }
-    dispatch(getMovieSuccess(updatedMovies));
+    else
+    {
+    for(let i=0; i<flights.length; i++) {
+      if(flights[i].origin.trim().toUpperCase() === origin.trim().toUpperCase() && flights[i].destination.trim().toUpperCase() === destination && flights[i].departureDate === departureDate) {
+        updatedFlights = flights.slice(i, i+1);
+      }
+    }
+  }
+    dispatch(getMovieSuccess(updatedFlights));
   }
 }
 

@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import './App.css';
 import { NavBar } from './components/Header/NavBar';
-import Movie from './containers/Movie';
+import Flight from './containers/Flight';
 class App extends Component {
   render() {
     return (
       <div className="App">
         <NavBar> </NavBar>
-        <Movie></Movie>
+        <Flight></Flight>
       </div>
     );
   }

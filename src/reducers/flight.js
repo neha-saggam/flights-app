@@ -1,5 +1,5 @@
 const initialState = {
-  movies: [],
+  flights: [],
   completed: false,
   countries: [],
   languages: []
@@ -11,14 +11,14 @@ export default function(state = initialState, action) {
     case 'FETCH_MOVIES_SUCCESSFUL':
       return {
         ...state,
-        movies: action.payload,
+        flights: action.payload,
         completed: true
       }
 
     case 'FETCH_MOVIES_FAILURE':
       return {
         ...state,
-        movies: action.payload,
+        flights: action.payload,
         completed: false
       }
 
